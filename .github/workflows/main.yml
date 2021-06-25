@@ -35,10 +35,12 @@ jobs:
     - name: Push image
       run: docker push ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_VERSION}
 
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: semantic release
-      id: release
-      uses: mpeki/linux-dev-tool-action
-      run: semantic-release
+#  release:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: semantic release
+#      uses: mpeki/linux-dev-tool-action
+#      run: semantic-release
+#      id: release
