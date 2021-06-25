@@ -27,13 +27,3 @@ jobs:
       run: docker build . --file Dockerfile --tag ${IMAGE_NAME}:${IMAGE_VERSION}
     - name: Deploy the Docker image
       run: docker tag ${IMAGE_NAME}:${IMAGE_VERSION} ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_VERSION}
-
-  deploy:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Push the Docker image
-        run: docker build . --file Dockerfile --tag ${IMAGE_NAME}:$(date +%s)
-
