@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PREV_REF="${1}"
+NEW_REF="${2}"
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ "${PREV_REF}" != "${NEW_REF}" && "${BRANCH_NAME}" == "master" ]]; then
+  echo
+  echo "NB! The master branch was just checked out, in this project work should be committed to develop"
+  echo
+fi
