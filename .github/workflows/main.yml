@@ -43,4 +43,5 @@ jobs:
     steps:
       - name: semantic release
         uses: mpeki/linux-dev-tool-action@main
-        run: semantic-release
+        with:
+          cmd: semantic-release
