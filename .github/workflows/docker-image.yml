@@ -3,7 +3,7 @@ name: Docker Image CI
 env:
   DOCKER_REPO: macp
   IMAGE_NAME: linux-dev-tools
-  IMAGE_VERSION: $(date +%s)
+  IMAGE_VERSION: latest
 
 on:
   push:
