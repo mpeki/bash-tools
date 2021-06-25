@@ -41,7 +41,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: mpeki/linux-dev-tool-action@main
       - name: semantic release
-        shell: bash
+        uses: mpeki/linux-dev-tool-action@main
         run: semantic-release
