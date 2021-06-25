@@ -3,7 +3,7 @@ name: Docker Image CI
 env:
   DOCKER_REPO: macp
   IMAGE_NAME: linux-dev-tools
-  IMAGE_VERSION: latest
+  IMAGE_VERSION: snapshot
 
 on:
   push:
@@ -23,9 +23,14 @@ jobs:
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: branch
-    - name: Build the Docker image
+    - name: Build image
       run: docker build . --file Dockerfile --tag ${IMAGE_NAME}:${IMAGE_VERSION}
-    - name: Tag the Docker image
+    - name: Tag image
       run: docker tag ${IMAGE_NAME}:${IMAGE_VERSION} ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_VERSION}
-    - name: Push the Docker image
+    - name: Docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: docker login
+    - name: Push image
       run: docker push ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_VERSION}
