@@ -25,5 +25,7 @@ jobs:
       id: branch
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${IMAGE_NAME}:${IMAGE_VERSION}
-    - name: Deploy the Docker image
+    - name: Tag the Docker image
       run: docker tag ${IMAGE_NAME}:${IMAGE_VERSION} ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_VERSION}
+    - name: Push the Docker image
+      run: docker push ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_VERSION}
