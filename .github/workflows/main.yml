@@ -34,3 +34,12 @@ jobs:
       run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - name: Push image
       run: docker push ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_VERSION}
+
+  release:
+    runs-on: ubuntu-latest
+    name: semantic release
+    steps:
+      - name: release
+      id: release
+      uses: mpeki/linux-dev-tool-action
+      run: semantic-release
