@@ -42,6 +42,8 @@ jobs:
 
     steps:
       - name: semantic release
+        env:
+          GITHUB_TOKEN: ${{secrets.REPO_ACCESS_TOKEN}}
         uses: mpeki/linux-dev-tool-action@main
         with:
           cmd: semantic-release
